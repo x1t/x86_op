@@ -68,6 +68,9 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
+    - name: pass
+      run: cd openwrt && sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default && sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default && git pull
+      
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
